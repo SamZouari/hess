@@ -50,7 +50,12 @@ from pathlib import Path
 
 # Directory for outputs
 
-path = Path("../../../hess_results/GC_variability_0.18.2/hap-fr")
+chnl = input("which channel ? (fr/hd) ")
+channel = "../../../hess_results/GC_variability_0.18.2/hap-"+chnl
+
+tried = "1cutoff"
+
+path = Path(channel)
 path.mkdir(exist_ok=True)
 
 pathma = Path(path/"mapdatasets")
@@ -62,10 +67,16 @@ pathmo.mkdir(exist_ok=True)
 # for consistency we will use the template using exp cutoff for both the central source and the DE
 # but it will generally require that the cutoff of the DE be frozen and set to infinity (lambda = 0)
 
-model_name = pathmo/"models_template_2cutoff.yaml" 
-#model_name = path/"3Dspectra/2amps_2indexes_1cutoff/joint_model_fitted.yaml"
+#model_name = pathmo/"models_template_2cutoff.yaml" 
 
-pathres = Path(path/"simu_variable/year_per_year_sensitivity/inprocess")
+model_name = channel+"/3Dspectra/2amps_2indexes_"+tried+"/models_joint_fitted.yaml"
+
+res = "simu_variable/2amps_2indexes_"+tried
+pathres = Path(path/res)
+pathres.mkdir(exist_ok=True)
+pathres = Path(path/"year_per_year_sensitivity")
+pathres.mkdir(exist_ok=True)
+pathres = Path(path/"inprocess")
 pathres.mkdir(exist_ok=True)
 
 ## Geometry

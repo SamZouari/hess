@@ -166,7 +166,7 @@ adding = input("are we adding simulated runs ? (y/n) ")
 
 if adding=='y' or adding=="yes":
     list = []
-    with open(pathres/f'GC_fluxes_simu_{year}.txt', 'r') as GCfile:
+    with open(pathres/f'GC_fluxes_simu_{year}.txt', 'r') as GCFile:
         for line in GCFile:
             x = line[:-1]
             list.append(x)
